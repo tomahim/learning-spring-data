@@ -15,8 +15,7 @@ public class Book {
     public Integer year;
     public List<Edition> editions;
 
-    public Book(String id, String author) {
-        this.id = id;
+    public Book(String author) {
         this.author = author;
     }
 
