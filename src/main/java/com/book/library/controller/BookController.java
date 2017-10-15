@@ -18,8 +18,10 @@ public class BookController {
     }
 
     @RequestMapping(method= RequestMethod.GET)
-    public List<Book> index(@RequestParam(required = false) String authorName) {
-        if (authorName != null && !authorName.isEmpty()) {
+    public List<Book> index(@RequestParam(required = false) String authorName, @RequestParam(required = false) String creatorEditionName) {
+        if (creatorEditionName != null && !creatorEditionName.isEmpty()) {
+            return bookRepository.findByEditionsCreatorName(creatorEditionName);
+        } else if (authorName != null && !authorName.isEmpty()) {
             return bookRepository.findByAuthor(authorName);
         } else {
             return bookRepository.findAll();
