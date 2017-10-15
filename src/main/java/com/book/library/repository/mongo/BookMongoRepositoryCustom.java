@@ -5,6 +5,6 @@ import com.book.library.domain.Book;
 import java.beans.Transient;
 import java.util.List;
 
-public interface BookRepositoryCustomAbc {
+public interface BookMongoRepositoryCustom {
     List<Book> search(String country);
 }

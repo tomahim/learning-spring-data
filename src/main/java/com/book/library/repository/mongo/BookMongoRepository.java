@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface BookRespository extends MongoRepository<Book, String>, BookRepositoryCustomAbc {
+public interface BookMongoRepository extends MongoRepository<Book, String>, BookMongoRepositoryCustom {
 
     public List<Book> findByAuthor(String authorName);
 
