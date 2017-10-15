@@ -2,10 +2,8 @@ package com.book.library.controller;
 
 import com.book.library.domain.Book;
 import com.book.library.repository.mongo.BookMongoRepository;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.book.library.repository.mongo.request.SearchBookRequest;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,9 +26,9 @@ public class BookController {
         }
     }
 
-    @RequestMapping(value= "/search", method = RequestMethod.GET)
-    public List<Book> search() {
-        return bookRepository.search("Nigeria");
+    @RequestMapping(value= "/search", method = RequestMethod.POST)
+    public List<Book> search(@RequestBody SearchBookRequest request) {
+        return bookRepository.search(request);
     }
 
 }

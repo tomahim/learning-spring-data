@@ -9,6 +9,8 @@ public class Book {
     @Id
     public String id;
     public String author;
+    public String country;
+    public Integer year;
 
     public Book(String id, String author) {
         this.id = id;
@@ -29,6 +31,22 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     @Override
