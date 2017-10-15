@@ -5,6 +5,8 @@ public class SearchBookRequest {
     public String countryName;
     public Integer publishYearStart;
     public Integer publishYearEnd;
+    public String editionName;
+    public String editionCreatorName;
 
     public String getAuthorName() {
         return authorName;
@@ -38,6 +40,22 @@ public class SearchBookRequest {
         this.publishYearEnd = publishYearEnd;
     }
 
+    public String getEditionName() {
+        return editionName;
+    }
+
+    public void setEditionName(String editionName) {
+        this.editionName = editionName;
+    }
+
+    public String getEditionCreatorName() {
+        return editionCreatorName;
+    }
+
+    public void setEditionCreatorName(String editionCreatorName) {
+        this.editionCreatorName = editionCreatorName;
+    }
+
     @Override
     public String toString() {
         return "SearchBookRequest{" +
@@ -45,6 +63,8 @@ public class SearchBookRequest {
                 ", countryName='" + countryName + '\'' +
                 ", publishYearStart=" + publishYearStart +
                 ", publishYearEnd=" + publishYearEnd +
+                ", editionName='" + editionName + '\'' +
+                ", editionCreatorName='" + editionCreatorName + '\'' +
                 '}';
     }
 }

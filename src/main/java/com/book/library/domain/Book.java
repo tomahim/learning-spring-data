@@ -3,6 +3,8 @@ package com.book.library.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document(collection = "books")
 public class Book {
 
@@ -11,6 +13,7 @@ public class Book {
     public String author;
     public String country;
     public Integer year;
+    public List<Edition> editions;
 
     public Book(String id, String author) {
         this.id = id;
@@ -49,11 +52,22 @@ public class Book {
         this.year = year;
     }
 
+    public List<Edition> getEditions() {
+        return editions;
+    }
+
+    public void setEditions(List<Edition> editions) {
+        this.editions = editions;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "id='" + id + '\'' +
                 ", author='" + author + '\'' +
+                ", country='" + country + '\'' +
+                ", year=" + year +
+                ", editions=" + editions +
                 '}';
     }
 }
