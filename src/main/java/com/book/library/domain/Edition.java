@@ -5,6 +5,10 @@ public class Edition {
 
     public Person creator;
 
+    public Edition() {
+
+    }
+
     public Edition(String name) {
         this.name = name;
     }

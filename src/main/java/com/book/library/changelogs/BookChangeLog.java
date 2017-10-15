@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-import java.io.InputStream;
+import java.io.IOException;
 import java.util.List;
 
 @ChangeLog
@@ -18,26 +18,24 @@ import java.util.List;
 public class BookChangeLog {
 
     final boolean runAlways = true;
+    final String BOOKS_COLLECTION = "books";
 
     @ChangeSet(order="001", id="reinitBookCollection", author = "testAuthor", runAlways = runAlways)
     public void reinitBookCollection(MongoTemplate mongoTemplate) {
-        mongoTemplate.dropCollection("books");
-        mongoTemplate.createCollection("books");
+        mongoTemplate.dropCollection(BOOKS_COLLECTION);
+        mongoTemplate.createCollection(BOOKS_COLLECTION);
         ObjectMapper mapper = new ObjectMapper();
 
         try {
             List<Book> books = mapper.readValue(getFile("books.json"), new TypeReference<List<Book>>() {});
             mongoTemplate.insertAll(books);
-            Book book = new Book("Toto");
-            book.setYear(1880);
-            mongoTemplate.save(book);
         } catch (Exception e) {
-
+            System.out.println(e.getMessage());
         }
     }
 
-    private File getFile(String fileName) {
-        return new File("/C:/Users/Thomas/dev/library/src/main/resources/books.json");
+    private File getFile(String fileName) throws IOException {
+        return new ClassPathResource("books.json").getFile();
     }
 
 }
